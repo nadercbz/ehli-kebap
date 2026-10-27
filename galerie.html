@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Galerie · Ehl-i Kebap</title>
+  <meta name="description" content="Alle Gerichte von Ehl-i Kebap als Freisteller: von oben und von der Seite.">
+  <meta name="theme-color" content="#0b0c0d">
+  <link rel="icon" href="assets/img/emblem.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/galerie.css">
+</head>
+<body class="page-galerie">
+  <div class="lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <header class="head is-solid">
+    <nav class="nav" aria-label="Hauptmenü">
+      <div class="nav__side">
+        <a href="index.html#ueber-uns">Über uns</a>
+        <a href="index.html#karte">Speisekarte</a>
+        <a class="is-active" href="galerie.html">Galerie</a>
+        <a class="nav__dlink" href="#download" data-open-dl hidden>Download</a>
+      </div>
+      <a class="nav__logo" href="index.html" aria-label="Ehl-i Kebap, zur Startseite"><img src="assets/img/logo.png" alt="Ehl-i Kebap"></a>
+      <div class="nav__side nav__side--r">
+        <a href="index.html#empfehlungen">Empfehlungen</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a class="btn btn--sm" data-info="telefonLink">Reservieren</a>
+      </div>
+      <button class="nav__burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span></button>
+    </nav>
+  </header>
+  <div class="drawer" aria-hidden="true">
+    <a href="index.html#ueber-uns">Über uns</a><a href="index.html#karte">Speisekarte</a><a href="index.html#spezialitaet">Spezialität</a>
+    <a href="galerie.html">Galerie</a><a href="#download" data-open-dl hidden>Download</a><a href="index.html#kontakt">Kontakt</a>
+    <a class="btn" data-info="telefonLink">Tisch reservieren</a>
+  </div>
+
+  <main>
+    <section class="gal-head">
+      <p class="script">Alle Gerichte</p>
+      <h1 class="orn">Galerie</h1>
+      <p class="gal-head__sub">Jedes Gericht frisch fotografiert und freigestellt. Von oben und von der Seite.</p>
+      <div class="dl-top" id="download" hidden>
+        <button class="dl-open" type="button" aria-expanded="false" aria-controls="dlPanel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg>
+          <span>Alle herunterladen</span>
+        </button>
+        <p>Alles auf einmal, nach Kategorie oder einzeln, in voller Auflösung</p>
+      </div>
+      <section class="dl-panel" id="dlPanel" hidden aria-label="Download"></section>
+
+      <div class="gal-bar">
+        <div class="gal-filter" role="tablist" aria-label="Kategorie">
+          <button class="is-on" data-kat="alle">Alle</button>
+        </div>
+        <div class="gal-tools">
+          <div class="gal-seg" role="group" aria-label="Ansicht">
+            <button class="is-on" data-view="alle">Beide</button>
+            <button data-view="flat">Von oben</button>
+            <button data-view="side">Von der Seite</button>
+          </div>
+          <div class="gal-seg gal-seg--look" role="group" aria-label="Bearbeitung">
+            <button class="is-on" data-look="grade">Color Graded</button>
+            <button data-look="orig">Original</button>
+          </div>
+          <div class="gal-seg gal-seg--bg" role="group" aria-label="Hintergrund">
+            <button class="is-on" data-bg="dunkel" aria-label="Dunkler Hintergrund"><i></i></button>
+            <button data-bg="hell" aria-label="Heller Hintergrund"><i></i></button>
+            <button data-bg="raster" aria-label="Transparenz Raster"><i></i></button>
+          </div>
+        </div>
+      </div>
+      <p class="gal-count"><b></b> Bilder</p>
+      <p class="gal-katdl" hidden></p>
+    </section>
+
+    <section class="gal-grid" aria-live="polite"></section>
+    <p class="gal-note">Die Draufsichten der Tees sind KI erzeugt (mit KI markiert), alle anderen sind echte Fotos des Shootings. Jedes Foto gibt es in zwei Fassungen: Color Graded (Produktfoto Look) und Original (nur freigestellt). In der Großansicht lassen sie sich mit einem Regler vergleichen.</p>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__bar">
+      <span>© 2026 Ehl-i Kebap</span>
+      <a href="index.html"><img src="assets/img/logo.png" alt="Ehl-i Kebap"></a>
+      <span class="script" data-text="slogan"></span>
+    </div>
+  </footer>
+
+  <div class="lb" role="dialog" aria-modal="true" aria-label="Bildansicht" aria-hidden="true">
+    <button class="lb__close" aria-label="Schließen">×</button>
+    <button class="lb__nav lb__nav--l" aria-label="Vorheriges Bild">‹</button>
+    <button class="lb__nav lb__nav--r" aria-label="Nächstes Bild">›</button>
+    <div class="lb__stage">
+      <div class="lb__box">
+        <img class="lb__a" alt="">
+        <img class="lb__b" alt="" aria-hidden="true">
+        <div class="lb__wipe" role="slider" aria-label="Vergleich Original und Color Graded" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"><i></i></div>
+        <span class="lb__tag lb__tag--l">Original</span>
+        <span class="lb__tag lb__tag--r">Color Graded</span>
+      </div>
+    </div>
+    <div class="lb__cap">
+      <div><b></b><i></i></div>
+      <span class="lb__count"></span>
+      <div class="lb__ctrl">
+        <div class="gal-seg lb__look" role="group" aria-label="Bearbeitung">
+          <button data-look="grade">Color Graded</button>
+          <button data-look="orig">Original</button>
+          <button data-look="cmp">Vergleich</button>
+        </div>
+        <button class="lb__switch"></button>
+      </div>
+      <div class="lb__dls" hidden></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/galerie.js"></script>
+</body>
+</html>

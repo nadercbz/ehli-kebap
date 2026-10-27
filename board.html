@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ehl-i Kebap · Menüboard</title>
+  <meta name="theme-color" content="#0d0e0f">
+  <link rel="icon" href="assets/img/emblem.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/board.css">
+</head>
+<body>
+  <!-- Bühne in 1920 x 1080, wird auf jeden Bildschirm skaliert. Klick schaltet Vollbild. -->
+  <div class="stage">
+    <div class="b-glow"></div>
+    <header class="b-top">
+      <img class="b-logo" src="assets/img/logo.png" alt="Ehl-i Kebap">
+      <div class="b-cat"><span class="b-cat__tr"></span><span class="b-cat__de"></span></div>
+    </header>
+    <div class="b-feature">
+      <div class="b-plate">
+        <div class="b-plate__shadow"></div>
+        <div class="b-plate__rot"><img class="b-plate__img" alt=""></div>
+      </div>
+      <div class="b-feature__name"><b></b><i></i></div>
+    </div>
+    <ul class="b-list"></ul>
+    <div class="b-pages"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/board.js"></script>
+</body>
+</html>

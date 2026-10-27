@@ -1,0 +1,49 @@
+/* Digitales Menüboard, Bühne 1920 x 1080 (Querformat), skaliert per board.js */
+:root {
+  --bg: #0d0e0f; --ink: #efe8dd; --mute: rgba(239, 232, 221, .6); --faint: rgba(239, 232, 221, .14);
+  --gold: #c9a46b; --gold-hi: #e0c08d;
+  --serif: "Cormorant Garamond", Georgia, serif; --sans: "Josefin Sans", Arial, sans-serif; --script: "Great Vibes", cursive;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+body { position: relative; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+body.is-embed { cursor: default; }
+.stage {
+  position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; overflow: hidden;
+  transform-origin: center center; transform: translate(-50%, -50%);
+  background: var(--bg) url("../assets/img/schiefer-1600.webp") center / 1200px 1200px repeat;
+}
+.b-glow { position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(42% 60% at 25% 56%, rgba(255, 244, 228, .08), transparent 70%),
+              radial-gradient(30% 40% at 4% 100%, rgba(201, 164, 107, .10), transparent 70%),
+              radial-gradient(120% 100% at 50% 50%, transparent 60%, rgba(0, 0, 0, .5)); }
+.b-top { position: absolute; left: 90px; right: 90px; top: 60px; display: flex; align-items: center; justify-content: space-between; }
+.b-logo { height: 60px; width: auto; }
+.b-cat { text-align: right; }
+.b-cat__tr { display: block; font-family: var(--script); font-size: 76px; line-height: 1; color: var(--gold-hi); }
+.b-cat__de { display: block; margin-top: 10px; font-weight: 300; font-size: 16px; letter-spacing: .4em; text-transform: uppercase; color: var(--ink); }
+
+.b-feature { position: absolute; left: 40px; top: 170px; width: 860px; height: 860px; perspective: 1600px; }
+.b-plate { position: absolute; left: 50%; top: 46%; width: 760px; height: 760px; translate: -50% -50%; transform-style: preserve-3d; }
+.b-plate__shadow { position: absolute; inset: 6%; border-radius: 50%; background: radial-gradient(closest-side, rgba(0, 0, 0, .72), rgba(0, 0, 0, .3) 55%, transparent); transform: translate(2.5%, 5%) scale(1.06); }
+.b-plate__rot { position: absolute; inset: 0; will-change: transform; }
+.b-plate__img { width: 100%; height: 100%; object-fit: contain; }
+.b-feature__name { position: absolute; left: 0; right: 0; bottom: 6px; text-align: center; }
+.b-feature__name b { display: block; font-family: var(--sans); font-weight: 300; font-size: 34px; letter-spacing: .22em; text-transform: uppercase; }
+.b-feature__name i { font-family: var(--script); font-style: normal; font-size: 40px; color: var(--gold); }
+
+.b-list { position: absolute; left: 960px; right: 90px; top: 230px; bottom: 120px; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+.b-item { position: relative; display: grid; grid-template-columns: 1fr auto; column-gap: 30px; padding-left: 34px; }
+.b-item::before { content: ""; position: absolute; left: 0; top: 22px; width: 12px; height: 1.5px; background: var(--faint); transition: width .5s, background .5s; }
+.b-item.is-on::before { width: 22px; background: var(--gold); }
+.b-item__name { font-family: var(--sans); font-weight: 300; font-size: 30px; line-height: 1.15; letter-spacing: .16em; text-transform: uppercase; }
+.b-item__tr { font-family: var(--serif); font-style: italic; font-size: 25px; color: var(--mute); margin-left: 16px; text-transform: none; letter-spacing: 0; }
+.b-item__desc { grid-column: 1 / -1; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--mute); margin-top: 2px; max-width: 760px; }
+.b-item__price { font-family: var(--sans); font-weight: 300; font-size: 28px; color: var(--gold-hi); align-self: start; }
+.b-list.is-dense { gap: 14px; }
+.b-list.is-dense .b-item__name { font-size: 26px; }
+.b-list.is-dense .b-item__desc { font-size: 17px; }
+
+.b-pages { position: absolute; left: 960px; bottom: 70px; display: flex; gap: 14px; }
+.b-pages span { width: 54px; height: 2px; background: var(--faint); position: relative; overflow: hidden; }
+.b-pages span i { position: absolute; inset: 0; background: var(--gold); transform: scaleX(0); transform-origin: left; }
