@@ -1,0 +1,45 @@
+# Baut die ZIP Downloads der Galerie (alle Bilder, je Fassung, je Kategorie) aus den PNG Dateien des Releases "fotos".
+# Der Upload vom Mac ist langsam (rund 0,2 MB/s), GitHub baut die ZIP Dateien in Sekunden und hängt sie an dasselbe Release.
+# Start nach dem Veröffentlichen der PNG:  gh workflow run zips.yml --repo nadercbz/ehli-kebap
+# Die Zusammenstellung steht in downloads_manifest.json (erzeugt von website/tools/downloads.py).
+name: ZIP Downloads bauen
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  zips:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: PNG aus dem Release laden
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p dl
+          gh release download fotos --pattern 'ehli-kebap_*.png' --dir dl --repo "$GITHUB_REPOSITORY"
+          ls dl | wc -l
+          du -sh dl
+      - name: ZIP Dateien bauen
+        run: |
+          mkdir -p out
+          python3 - <<'PY'
+          import json, zipfile, os
+          m = json.load(open("downloads_manifest.json"))
+          fehlt = []
+          for name, p in m["zips"].items():
+              with zipfile.ZipFile(f"out/{name}", "w", zipfile.ZIP_STORED) as z:
+                  for f in p["dateien"]:
+                      pfad = f"dl/{f}"
+                      if os.path.exists(pfad):
+                          z.write(pfad, f)
+                      else:
+                          fehlt.append(f)
+              print(name, round(os.path.getsize(f"out/{name}") / 1e6), "MB")
+          if fehlt:
+              raise SystemExit("Dateien fehlen im Release: " + ", ".join(sorted(set(fehlt))))
+          PY
+      - name: ZIP Dateien an das Release hängen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload fotos out/*.zip --clobber --repo "$GITHUB_REPOSITORY"
